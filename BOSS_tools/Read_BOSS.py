@@ -7,20 +7,18 @@ from argparse import ArgumentParser
 import sys
 
 des = 'Code which reads the BOSS galaxy and random catalogs in fits format \
-        and returns text files containing RA, DEC, Z, W, N or \
-        X, Y, Z, W, N columns (allowing choice of cosmology). \
-        Reading is performed by the read() method \
-        defined in the Read_BOSS class.'
+       and returns text files containing RA, DEC, Z, W, N or \
+       X, Y, Z, W, N columns, allowing choice of fiducial cosmology \
+       or use of systematics, and several other options. \
+       Operations performed by read() method defined in Read_BOSS class. \n'
          
-epi = 'For more information or help email sunny.vagnozzi@fysik.su.se.'
+epi = 'For more information or help email sunny.vagnozzi@fysik.su.se. \n'
 
 def str2bool(v):
     if v.lower() in ('yes', 'true', 't', 'y', '1'):
         return True
     elif v.lower() in ('no', 'false', 'f', 'n', '0'):
         return False
-    else:
-        raise argparse.ArgumentTypeError('Boolean value expected.')
 
 class Read_BOSS(object):
       
@@ -172,15 +170,23 @@ class Read_BOSS(object):
           else:
              print('Lengths of randoms do not match :(\n')
              os._exit(1)
+          
+          header_rdzwn = 'Columns are: RA, DEC, redshift, weights, comoving number density.'
+          header_rdzwn += ' Using a fiducial cosmology with Omegamatter = '+str(self.omegamatter)
+          header_rdzwn += ' and H0 = '+str(self.hubble)+' km/s/Mpc'
+
+          header_xyzwn = 'Columns are: Cartesian X, Y, Z, weights, comoving number density.'
+          header_xyzwn += ' Using a fiducial cosmology with Omegamatter = '+str(self.omegamatter)
+          header_xyzwn += ' and H0 = '+str(self.hubble)+' km/s/Mpc'
 
           if self.save_rdzwn:
              print 'Saving to rdzwn files, have patience...\n'
              np.savetxt('galaxies_rdzwn',np.column_stack((ra_gal, dec_gal, \
                          red_gal, w_gal, n_gal)), fmt='%15.8e', \
-                         header='Columns are: RA, DEC, redshift, weights, comoving number density. Using a fiducial cosmology with Omegamatter = '+str(self.omegamatter)+' and H0 = '+str(self.hubble)+' km/s/Mpc')
+                         header=header_rdzwn)
              np.savetxt('randoms_rdzwn', np.column_stack((ra_ran, dec_ran, \
                          red_ran, w_ran, n_ran)), fmt='%15.8e',
-                         header='Columns are: RA, DEC, redshift, weights, comoving number density. Using a fiducial cosmology with Omegamatter = '+str(self.omegamatter)+' and H0 = '+str(self.hubble)+' km/s/Mpc')
+                         header=header_rdzwn)
              print 'Saved to the following files: \n', \
                    'galaxies_rdzwn and randoms_rdzwn \n'
 
@@ -188,10 +194,10 @@ class Read_BOSS(object):
              print 'Saving to xyzwn files, have patience...\n'
              np.savetxt('galaxies_xyzwn', np.column_stack((x_gal, y_gal, \
                         z_gal, w_gal, n_gal)), fmt='%15.8e',
-                        header='Columns are: Cartesian X, Y, Z, weights, comoving number density. Using a fiducial cosmology with Omegamatter = '+str(self.omegamatter)+' and H0 = '+str(self.hubble)+' km/s/Mpc')
+                        header=header_xyzwn)
              np.savetxt('randoms_xyzwn', np.column_stack((x_ran, y_ran, \
                         z_ran, w_ran, n_ran)), fmt='%15.8e',
-                        header='Columns are: Cartesian X, Y, Z, weights, comoving number density. Using a fiducial cosmology with Omegamatter = '+str(self.omegamatter)+' and H0 = '+str(self.hubble)+' km/s/Mpc')
+                        header=header_xyzwn)
              print 'Saved to the following files: \n', \
                    'galaxies_xyzwn and randoms_rdzwn \n'
 
