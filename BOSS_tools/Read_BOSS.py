@@ -175,23 +175,25 @@ class Read_BOSS(object):
 
           if self.save_rdzwn:
              print 'Saving to rdzwn files, have patience...\n'
-             np.savetxt('galaxies_DR12_CMASS_rdzwn',np.column_stack((ra_gal, dec_gal, \
-                         red_gal, w_gal, n_gal)), fmt='%15.8e')
-             np.savetxt('randoms_DR12_CMASS_rdzwn', np.column_stack((ra_ran, dec_ran, \
-                         red_ran, w_ran, n_ran)), fmt='%15.8e')
+             np.savetxt('galaxies_rdzwn',np.column_stack((ra_gal, dec_gal, \
+                         red_gal, w_gal, n_gal)), fmt='%15.8e', \
+                         header='Columns are: RA, DEC, redshift, weights, comoving number density. Using a fiducial cosmology with Omegamatter = '+str(self.omegamatter)+' and H0 = '+str(self.hubble)+' km/s/Mpc')
+             np.savetxt('randoms_rdzwn', np.column_stack((ra_ran, dec_ran, \
+                         red_ran, w_ran, n_ran)), fmt='%15.8e',
+                         header='Columns are: RA, DEC, redshift, weights, comoving number density. Using a fiducial cosmology with Omegamatter = '+str(self.omegamatter)+' and H0 = '+str(self.hubble)+' km/s/Mpc')
              print 'Saved to the following files: \n', \
-                   'galaxies_DR12_CMASS_rdzwn (galaxies RA, DEC, RED, W_TOT, NZ)', \
-                   ', ' , 'randoms_DR12_CMASS_rdzwn (randoms RA, DEC, RED, W_FKP, NZ)', '\n'
+                   'galaxies_rdzwn and randoms_rdzwn \n'
 
           if self.save_xyzwn:
              print 'Saving to xyzwn files, have patience...\n'
-             np.savetxt('galaxies_DR12_CMASS_xyzwn', np.column_stack((x_gal, y_gal, \
-                        z_gal, w_gal, n_gal)), fmt='%15.8e')
-             np.savetxt('randoms_DR12_CMASS_xyzwn', np.column_stack((x_ran, y_ran, \
-                        z_ran, w_ran, n_ran)), fmt='%15.8e')
+             np.savetxt('galaxies_xyzwn', np.column_stack((x_gal, y_gal, \
+                        z_gal, w_gal, n_gal)), fmt='%15.8e',
+                        header='Columns are: Cartesian X, Y, Z, weights, comoving number density. Using a fiducial cosmology with Omegamatter = '+str(self.omegamatter)+' and H0 = '+str(self.hubble)+' km/s/Mpc')
+             np.savetxt('randoms_xyzwn', np.column_stack((x_ran, y_ran, \
+                        z_ran, w_ran, n_ran)), fmt='%15.8e',
+                        header='Columns are: Cartesian X, Y, Z, weights, comoving number density. Using a fiducial cosmology with Omegamatter = '+str(self.omegamatter)+' and H0 = '+str(self.hubble)+' km/s/Mpc')
              print 'Saved to the following files: \n', \
-                   'galaxies_DR12_CMASS_xyzwn (galaxies X, Y, Z, W_TOT, NZ)', \
-                   ', ' , 'randoms_DR12_CMASS_rdzwn (randoms X, Y, Z, W_FKP, NZ)', '\n'
+                   'galaxies_xyzwn and randoms_rdzwn \n'
 
 if __name__ == '__main__':
    
