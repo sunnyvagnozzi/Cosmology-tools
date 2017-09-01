@@ -22,7 +22,7 @@ There are a number of variables
 
 ### To run Read_BOSS from an ipython terminal or notebook
 
-To run Read_BOSS from an ipython terminal or notebook (in the same folder as Read_BOSS.py) simply type:
+To run Read_BOSS from an ipython terminal or notebook (in the same folder as Read_BOSS.py), simply type:
 
     >> from Read_BOSS import Read_BOSS
     >> data = Read_BOSS([arguments]).read()
