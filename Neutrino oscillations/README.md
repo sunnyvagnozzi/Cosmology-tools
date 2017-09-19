@@ -80,3 +80,7 @@ When you run the code, make sure that you have included the following codes or f
 -*deltam2_32_ih.dat*: Chi^2 profiles for the atmospheric mass splitting assuming IH provided by NuFIT 3.0
 
 The code relies on standard Python libraries such as numpy, scipy, and argparse in order to run, so make sure you have those installed.
+
+## Epilogue
+
+If you use the code in a publication, please cite bla bla bla
