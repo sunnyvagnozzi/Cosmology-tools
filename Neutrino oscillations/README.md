@@ -59,6 +59,24 @@ If I want to use only oscillations data, and still want to save the Chi^2 profil
 
      python chi2_neutrino_hierarchy.py -d 1
 
+If you want to try out the code, in this same folder I have provided two cosmological posteriors you can use, "gsnpde_p_mnu.dat" and "lcdm_p_mnu.dat".
+
 ## Known issues and bugs
 
-If the code is run with the flag "-d 2" (i.e. only cosmology data is used), the code will return a nan sigma preference for the NH. The reason for this is that cosmological data is not sensitive to the neutrino mass hierarchy (at least at present time and to leading order), and hence the cosmological posterior one uses is the same for both NH and IH. Therefore, the resulting \Delta    \Chi    ^2 = 0, leading to the nan sigma preference for one hierarchy over the other. In a future release this will be fixed to account for a proper treatment of the preference for NH over IH with cosmology data alone, as per Hannestad & Schwetz, JCAP 11 (2016) 035, http://arxiv.org/abs/arXiv:1606.04691
+If the code is run with the flag "-d 2" (i.e. only cosmology data is used), the code will return a nan sigma preference for the NH. The reason for this is that cosmological data is not sensitive to the neutrino mass hierarchy (at least at present time and to leading order), and hence the cosmological posterior one uses is the same for both NH and IH. Therefore, the resulting \Delta \Chi ^2 = 0, leading to the nan sigma preference for one hierarchy over the other. In a future release this will be fixed to account for a proper treatment of the preference for NH over IH with cosmology data alone, as per Hannestad & Schwetz, JCAP 11 (2016) 035, http://arxiv.org/abs/arXiv:1606.04691
+
+## Things to keep in mind
+
+When you run the code, make sure that you have included the following codes or files (which I provide in this folder) in the same folder in which you are running the code:
+
+-*chisq2sigma.py*: a Python class used to convert a value of Delta Chi^2 to a significance in # of sigma, for any given number of degrees of freedom of the Chi^2 distribution
+
+-*deltam2_21_nh.dat*: Chi^2 profiles for the solar mass splitting assuming NH provided by NuFIT 3.0
+
+-*deltam2_32_nh.dat*: Chi^2 profiles for the atmospheric mass splitting assuming NH provided by NuFIT 3.0
+
+-*deltam2_21_ih.dat*: Chi^2 profiles for the solar mass splitting assuming IH provided by NuFIT 3.0
+
+-*deltam2_32_ih.dat*: Chi^2 profiles for the atmospheric mass splitting assuming IH provided by NuFIT 3.0
+
+The code relies on standard Python libraries such as numpy, scipy, and argparse in order to run, so make sure you have those installed.
