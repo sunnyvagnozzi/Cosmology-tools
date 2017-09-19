@@ -49,11 +49,16 @@ To see the allowed optional arguments to be passed from the command line, type:
                              Controls chattiness of code: 0 (default) for non
                              chatty, >0 for chatty.
 
-     ** Developed by Sunny Vagnozzi, 2017. For more information, help, or for
-     reporting bugs please contact sunny.vagnozzi@fysik.su.se. For help with the
-     usage of the code, type in the command line: python chi2_neutrino_hierarchy.py
-     -h Known bugs: when running with the flag "-d 2" (i.e. when only cosmological
-     data is usecd) the code will return nan sigma since cosmological data is not
-     sensitive to the neutrino mass ordering and hence Delta Chi^2 (NH-IH) = 0.
-     Will be improved in a future release through the treatment of Hannestad &
-     Schwetz 2016. **
+## Examples
+
+Some examples on how to run the code from shell. If my M_nu posterior from cosmological data is in the Posteriors/ folder, and is called "planckTT_lowP_BAO_p_mnu.dat", plus I want the code to save the Chi^2 profiles (which will be saved in profile_chi2_nh.dat and profile_chi2_ih.dat), and finally I want the code to be chatty (i.e. to execute print statemements to keep me informed on what's going one), then I would run the code as follows:
+
+     python chi2_neutrino_hierarchy.py -r Posteriors/planckTT_lowP_BAO -s Yes -v 1
+     
+If I want to use only oscillations data, and still want to save the Chi^2 profiles, but don't want the code to be chatty, I run:
+
+     python chi2_neutrino_hierarchy.py -d 1
+
+## Known issues and bugs
+
+If the code is run with the flag "-d 2" (i.e. only cosmology data is used), the code will return a nan sigma preference for the NH. The reason for this is that cosmological data is not sensitive to the neutrino mass hierarchy (at least at present time and to leading order), and hence the cosmological posterior one uses is the same for both NH and IH. Therefore, the resulting Delta Chi^2 = 0, leading to the nan sigma preference for one hierarchy over the other. In a future release this will be fixed to account for a proper treatment of the preference for NH over IH with cosmology data alone, as per Hannestad & Schwetz, JCAP 11 (2016) 035, http://arxiv.org/abs/arXiv:1606.04691
