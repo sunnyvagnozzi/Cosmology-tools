@@ -4,7 +4,7 @@ A Python code which allows the combination of cosmological and neutrino oscillat
 
 ## Usage
 
-### Run the code from an ipython terminal or notebook
+### To run the code from an ipython terminal or notebook
 
 To run the code from an ipython terminal or notebook (in the same folder as chi2_neutrino_hierarchy.py), simply type:
 
