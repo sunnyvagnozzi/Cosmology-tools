@@ -83,4 +83,4 @@ The code relies on standard Python libraries such as numpy, scipy, and argparse 
 
 ## Epilogue
 
-If you use the code in a publication, please cite bla bla bla
+If you use the code in a publication, please cite bla bla bla <a href="http://www.quora.com/Adam-DAngelo">Quora profile link for Adam D'Angelo</a>
