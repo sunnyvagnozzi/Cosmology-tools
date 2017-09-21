@@ -15,12 +15,12 @@ class omega(object):
 
           for i in range(1,self.num+1):
               num_chain = str(i)
-              chain = np.loadtxt(root+'_'+num_chain+'.txt')
+              chain = np.loadtxt(self.root+'_'+num_chain+'.txt')
               omegabh2, omegach2, H0 = chain[:,2], chain[:,3], chain[:,40]
               h = H0/100.0
               omega = (omegabh2 + omegach2)/(h*h)
               chain_new = np.column_stack((chain, omega))
-              np.savetxt(root+'_omega_'+str(i)+'.txt', chain_new, fmt='%15.8e')
+              np.savetxt(self.root+'_omega_'+str(i)+'.txt', chain_new, fmt='%15.8e')
               print "Processed chain ", num_chain
               del chain
               del omegabh2
