@@ -13,7 +13,7 @@ class omega(object):
 
       def process_chain(self):
 
-          for i in range(1,num+1):
+          for i in range(1,self.num+1):
               num_chain = str(i)
               chain = np.loadtxt(root+'_'+num_chain+'.txt')
               omegabh2, omegach2, H0 = chain[:,2], chain[:,3], chain[:,40]
