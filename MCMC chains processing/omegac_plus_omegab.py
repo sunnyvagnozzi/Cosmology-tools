@@ -11,7 +11,7 @@ class omega(object):
           self.root = root
           self.num = num
 
-      def process_chain(self):
+      def process_chains(self):
 
           for i in range(1,self.num+1):
               num_chain = str(i)
@@ -52,4 +52,4 @@ if __name__ == '__main__':
    root = args.root
    num = args.num
 
-   omega(root = root, num = num).process_chain()
+   omega(root = root, num = num).process_chains()
