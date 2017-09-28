@@ -1,6 +1,7 @@
 import numpy as np
 from argparse import ArgumentParser
 import sys
+import os
 
 def str2bool(v):
     if v.lower() in ('yes', 'true', 't', 'y', '1'):
@@ -44,6 +45,10 @@ class oscillations_prior(object):
               chain_new = chain[index,:]
               np.savetxt(self.root+'_oscillations_'+num_chain+'.txt', chain_new, fmt='%15.8e')
               print "Processed chain", num_chain
+
+          command = 'cp '+self.root+'.paramnames '+self.root+'_oscillations.paramnames'
+          os.system(command)
+          print "Copied paramnames"
 
 if __name__ == '__main__':
    
