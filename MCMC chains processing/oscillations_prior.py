@@ -49,6 +49,7 @@ class oscillations_prior(object):
           command = 'cp '+self.root+'.paramnames '+self.root+'_oscillations.paramnames'
           os.system(command)
           print "Copied paramnames"
+          del chain
 
 if __name__ == '__main__':
    
